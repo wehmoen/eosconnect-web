@@ -1,0 +1,37 @@
+{% extends './layout.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col">
+            <h2>Welcome!</h2>
+        </div>
+    </div>
+    <div class="row">
+        {% for app in apps %}
+            <div class="col-3">
+                <div class="card ">
+                    <div class="card-header ">
+                        <h4 class="card-title">{{ app.name }}</h4>
+                        <p class="card-category">{{ app.description }}</p>
+                    </div>
+                    <div class="card-body text-center">
+                        <div class="btn-group">
+                            <a href="/int/apps/{{ app.name }}" class="btn btn-sm btn-info">
+                                Show App
+                            </a>
+                            <a href="/int/apps/{{ app.name }}/edit" class="btn btn-sm btn-secondary">
+                                Edit App
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-footer ">
+                        <hr>
+                        <div class="stats">
+                            <i class="fab fa-ethereum"></i> This application is secured by EOSconnect.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

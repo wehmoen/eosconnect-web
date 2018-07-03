@@ -1,0 +1,75 @@
+{% extends './layout.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col">
+            <h2>Create App </h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="alert alert-info">
+                <i class="fa fa-info-circle"></i>
+                To prevent fraud we will charge you a small service fee of 6.99€. This is a one time payment and all
+                your data are securely submitted over https.
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <form action="/int/apps/new" method="post">
+                <div class="form-group">
+                    <label class="control-label" for="name">
+                        App Name
+                    </label>
+                    <input required maxlength="12" minlength="4" class="form-control" id="name" name="app_name"
+                           type="text"/>
+                    <small>Min length: 4, Max length: 12, Must be unique</small>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="name">
+                        Description
+                    </label>
+                    <textarea required maxlength="32" rows="5" class="form-control" name="description"
+                              type="text"></textarea>
+                    <small>Max length: 32</small>
+                </div>
+                <div class="form-group">
+                    <label for="tags">App Logo (Optimal resolution: 1024x1024. Max. filesize: 5MB)</label>
+                    <div class="input-group">
+                        <input required type="url" class="form-control" value="" id="previewimage" name="previewimage"
+                               readonly="" aria-label="Preview Image">
+                        <div class="input-group-append">
+                            <button id="upload_now" class="upldr-btn btn btn-sm btn-gradient-primary" type="button">
+                                Select Image
+                            </button>
+                        </div>
+                    </div>
+                    <input accept="image/*" id="upload_select" type="file" class="d-none">
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="name">
+                        Redirect Urls
+                    </label>
+                    <textarea required class="form-control" rows="5" id="name" name="redirect_uris"
+                              type="text"></textarea>
+                    <small>One per line. Must start with http or https</small>
+                </div>
+                <div class="form-group">
+                    <script
+                            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                            data-key="pk_live_cTcbcvamTZb1wRHdJmKuwmY9"
+                            data-amount="699"
+                            data-name="EOSconnect"
+                            data-description="A new Oauth2 App for EOSconnect."
+                            data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                            data-locale="auto"
+                            data-zip-code="true"
+                            data-label="Create New App"
+                            data-currency="eur">
+                    </script>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends './layout.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col">
+            <div>
+                <span class="Avatar float-left mr-3" style="height: 80px; width: 80px;">
+                    <img width="64" src="/api/v1/app/{{ app.name }}.logo" alt="avatar">
+                </span>
+                <h2 class="d-inline">{{ app.name }}</h2>
+                <div class="float-right">
+                    <div class="btn-group">
+                        <a class="btn btn-secondary ml-2" href="/int/apps/{{ app.name }}/edit">
+                            <i class="fa fa-pencil"></i>
+                            Edit
+                        </a>
+                        <button class="btn btn-info"
+                                title="This app has {{ userCount|length }} authenticated user{% if userCount|length > 1 %}s{% endif %} at the
+                moment." type="button">{{ userCount|length }} <i class="fa fa-users"></i></button>
+                    </div>
+
+                </div>
+                <p>{{ app.description }}</p>
+                <div class="pt-4">
+                    <div class="list-group">
+                        <div class="list-group-item">
+                            <b class="mr-1">
+                                <span>Client Id</span>:
+                            </b>
+                            {{ app.name }}</div>
+                        <div class="list-group-item">
+                            <b class="mr-1">
+                                <span>Client Secret</span>:
+                            </b>
+                            <a href="#" data-secret="{{ app.secret }}">
+                                <span>click to reveal</span>
+                            </a>
+                            <a href="/int/apps/{{ app.name }}/reset" type="button"
+                               class="btn btn-secondary btn-sm ml-2">
+                                <span>Reset</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <br></div>
+        </div>
+    </div>
+{% endblock %}

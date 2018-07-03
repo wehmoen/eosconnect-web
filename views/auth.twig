@@ -1,0 +1,54 @@
+{% extends 'layout.twig' %}
+{% block body %}
+    <form action="/auth" method="post" class="login100-form validate-form">
+        <span class="login100-form-title p-b-48">
+						<img class="login100-form-logo" src="/api/v1/app/{{ client.name }}.logo">
+					</span>
+
+        <span class="login100-form-description  p-b-26">
+            Do you want to authorize the application {{ client.name }} to
+                <ul class="mt-1">
+                {% for desc in scope_description %}
+                    <li>{{ desc }}</li>
+                {% endfor %}
+                </ul>
+        </span>
+
+        <div id="step_1">
+            <div class="container-login100-form-btn">
+                <div class="wrap-login100-form-btn">
+                    <div class="login100-form-bgbtn"></div>
+                    <button type="button" class="login100-form-btn">
+                        Continue
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="step_2" class="d-none">
+            <div class="wrap-input100 validate-input" data-validate="Invalid Username">
+                <input class="input100" type="text" name="username">
+                <span class="focus-input100" data-placeholder="Username"></span>
+            </div>
+
+            <div class="wrap-input100 validate-input" data-validate="Enter private active key.">
+						<span class="btn-show-pass">
+							<i class="zmdi zmdi-eye"></i>
+						</span>
+                <input class="input100" type="password" name="pass">
+                <span class="focus-input100" data-placeholder="Private Active Key"></span>
+            </div>
+
+            <div class="container-login100-form-btn">
+                <div class="wrap-login100-form-btn">
+                    <div class="login100-form-bgbtn"></div>
+                    <button class="login100-form-btn">
+                        Login
+                    </button>
+                </div>
+            </div>
+            <div class="text-center mt-2">
+                <small>Need an account? <br><a href="#" id="createAccount">Create Account</a></small>
+            </div>
+        </div>
+    </form>
+{% endblock %}

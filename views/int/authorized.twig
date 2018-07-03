@@ -1,0 +1,27 @@
+{% extends './layout.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col">
+            <h2>Authorized Apps
+                <small>This apps have access to my account. To revoke its' access just click its' name.</small>
+            </h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <ul class="list-group">
+                {% for app in apps %}
+                    <li class="list-group-item">
+                        <a href="/int/authorized/{{ app.client_id }}/revoke">{{ app.client_id }}</a>
+                    </li>
+                {% endfor %}
+                {% if apps.length == 0 %}
+                    <li class="list-group-item">
+                        No apps were found.
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}
